@@ -1,5 +1,5 @@
 {
-  "homepage":"https://jimenadev.github.io/react-with-typescript",
+  "homepage": "https://jimenadev.github.io/react-with-typescript",
   "name": "react-with-typescript",
   "version": "0.1.0",
   "private": true,
@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy":"gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "lodash": "^4.17.21",
