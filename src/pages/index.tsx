@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { MouseEventHandler } from "react"
 import type { NextPage } from "next";
 import Head from "next/head";
 import { RandomFox } from "@/components/RandomFox";
@@ -20,11 +21,18 @@ type ImageItem = {
 };
 
 const Home: NextPage = () => {
-  const [images, setImages] = useState<Array<ImageItem>>([
-    { id: generateId(), url: `https://randomfox.ca/images/${random()}.jpg` },
-    { id: generateId(), url: `https://randomfox.ca/images/${random()}.jpg` },
-    { id: generateId(), url: `https://randomfox.ca/images/${random()}.jpg` },
-  ]);
+  const [images, setImages] = useState<Array<ImageItem>>([]);
+
+  const addNewFox:MouseEventHandler<HTMLButtonElement> = (event) =>{
+    const newImagenItem:ImageItem= {
+       id: generateId(), url: `https://randomfox.ca/images/${random()}.jpg`
+    }
+
+    setImages([
+      ...images,
+      newImagenItem
+    ])
+  }
 
   return (
     <div>
@@ -35,6 +43,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
+      <button onClick={addNewFox}>Add new fox</button>
         {images.map(({ id, url }) => (
           <div className="p-4" key={id}>
             <RandomFox image={url} />
